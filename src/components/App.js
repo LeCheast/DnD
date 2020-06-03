@@ -1,21 +1,23 @@
 import React from 'react';
 /*import axios from 'axios';*/
 
-import logo from '../logo.svg';
-import './App.css';
 import dogs from '../api/dogs';
 import dnd from '../api/dnd';
 
+import Header from './Header';
+import Search from './Search';
+
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: "",
-      display: "none",
-      dnd: "",
-      search: ""
-    };
+  state = {
+    image: "",
+    display: "none",
+    dnd: "",
+    search: ""
+  };
+
+  onTermSubmit = (term, type) => {
+    console.log(term + type);
   }
 
   componentDidMount() {
@@ -46,21 +48,16 @@ class App extends React.Component {
   }
 
   render() {
-    const style = {
-      display: this.state.display,
-      marginTop: "20px"
-    }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Search a DnD Spell</p>
+      <div>
+        <Header />
+        <div className="container">
+          <h1>Search the DnD Library</h1>
+          <Search onFormSubmit={this.onTermSubmit} />
           <input type="text" onChange={(e) => this.getDndData(e.target.value)} value={this.state.search} />
           <p id="dndInfo">{this.state.dnd}</p>
-          <button onClick={this.getImageUrl}>Click Me!</button>
-          <img style={style} alt="Rand-Imag" src={this.state.image} />
-        </header>
+        </div>
       </div>
     );
   }
