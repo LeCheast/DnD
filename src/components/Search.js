@@ -1,7 +1,22 @@
 import React from 'react';
 
+import dnd from '../api/dnd';
+import SearchDropDown from './SearchDropDown';
+
 class Search extends React.Component {
-    state = { term: '', type: '/spells' };
+    state = { term: '', type: 'api/spells', keys: {}, termList: [] };
+
+    componentDidMount = async () => {
+        const result = await dnd.get('/api/');
+        this.setState({ keys: result.data });
+
+        var getList = [];
+        Object.keys(this.state.keys).map(function (dndKey) {
+            getList.push({ key: dndKey, url: result.data[dndKey] });
+        });
+
+        this.setState({ termList: getList });
+    }
 
     onInputChange = (event) => {
         this.setState({ term: event.target.value })
@@ -14,14 +29,15 @@ class Search extends React.Component {
         this.props.onFormSubmit(this.state.term, this.state.type);
     }
 
+    onTypeSelect = (type) => {
+        console.log(type);
+    }
+
     render() {
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>
-                    <select className="form-control my-1">
-                        <option>Test</option>
-                        <option>Test</option>
-                    </select>
+                    <SearchDropDown searchTerms={this.state.termList} />
                     <input className="form-control my-1" type="text" value={this.state.term} onChange={this.onInputChange} />
                 </form>
             </div>
