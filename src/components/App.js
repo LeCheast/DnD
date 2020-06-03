@@ -1,10 +1,10 @@
 import React from 'react';
 /*import axios from 'axios';*/
 
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './App.css';
-import dogs from './api/dogs';
-import dnd from './api/dnd';
+import dogs from '../api/dogs';
+import dnd from '../api/dnd';
 
 class App extends React.Component {
 
