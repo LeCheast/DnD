@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Search extends React.Component {
-    state = { term: '', type: 'Type Test' };
+    state = { term: '', type: '/spells' };
 
     onInputChange = (event) => {
         this.setState({ term: event.target.value })
