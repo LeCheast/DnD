@@ -6,20 +6,19 @@ import dnd from '../api/dnd';
 
 import Header from './Header';
 import Search from './Search';
+import ResultList from './ResultList';
 
 class App extends React.Component {
 
-  state = {
-    dnd: ""
-  };
+  state = { dnd: [] };
 
-  onTermSubmit = (term, type) => {
-    dnd.get(type, {
-      params: { name: term },
-    }).then(response => {
-      this.setState({ dnd: response.data.results[0].name });
+  onTermSubmit = async (term, type) => {
+    const response = await dnd.get(type, {
+      params: { name: term }
     });
-  }
+
+    this.setState({ dnd: response.data.results });
+  };
 
   render() {
 
@@ -29,7 +28,7 @@ class App extends React.Component {
         <div className="container">
           <h1>Search the DnD Library</h1>
           <Search onFormSubmit={this.onTermSubmit} />
-          <p id="dndInfo">{this.state.dnd}</p>
+          <ResultList results={this.state.dnd} />
         </div>
       </div>
     );
