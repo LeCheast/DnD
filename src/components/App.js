@@ -1,7 +1,5 @@
 import React from 'react';
-/*import axios from 'axios';*/
 
-import dogs from '../api/dogs';
 import dnd from '../api/dnd';
 
 import Header from './Header';
