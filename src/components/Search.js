@@ -12,10 +12,11 @@ class Search extends React.Component {
 
         var getList = [];
         Object.keys(this.state.keys).map(function (dndKey) {
-            getList.push({ key: dndKey, url: result.data[dndKey] });
+            return getList.push({ key: dndKey, url: result.data[dndKey] });
         });
 
         this.setState({ termList: getList });
+        this.setState({ type: this.state.termList[0].key });
     }
 
     onInputChange = (event) => {
@@ -30,14 +31,14 @@ class Search extends React.Component {
     }
 
     onTypeSelect = (type) => {
-        console.log(type);
+        this.setState({ type: 'api/' + type });
     }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>
-                    <SearchDropDown searchTerms={this.state.termList} />
+                    <SearchDropDown onTypeSelect={this.onTypeSelect} searchTerms={this.state.termList} />
                     <input className="form-control my-1" type="text" value={this.state.term} onChange={this.onInputChange} />
                 </form>
             </div>
