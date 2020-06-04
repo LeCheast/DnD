@@ -9,7 +9,7 @@ const Header = () => {
         <nav className="navbar navbar-dark bg-dark">
             <span className="navbar-brand mb-0 h1">DnD Library Look Up</span>
             <div className="navbar-nav ml-auto">
-                <a href="https://www.dnd5eapi.co/" style={linkStyle}>See API Documentation</a>
+                <a href="https://www.dnd5eapi.co/" style={linkStyle}>API Documentation</a>
             </div>
         </nav>
     );
