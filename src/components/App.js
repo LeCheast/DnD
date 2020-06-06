@@ -3,8 +3,8 @@ import React from 'react';
 import dnd from '../api/dnd';
 
 import Header from './Header';
-import Search from './Search';
-import ResultList from './ResultList';
+import Search from './search/Search';
+import ResultList from './results/ResultList';
 
 class App extends React.Component {
 

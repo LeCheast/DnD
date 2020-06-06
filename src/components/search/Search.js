@@ -1,6 +1,6 @@
 import React from 'react';
 
-import dnd from '../api/dnd';
+import dnd from '../../api/dnd';
 import SearchDropDown from './SearchDropDown';
 
 class Search extends React.Component {
