@@ -4,7 +4,7 @@ import dnd from '../../api/dnd';
 import SearchDropDown from './SearchDropDown';
 
 class Search extends React.Component {
-    state = { term: '', type: 'api/spells', keys: {}, termList: [] };
+    state = { term: '', type: '', keys: {}, termList: [] };
 
     componentDidMount = async () => {
         const result = await dnd.get('/api/');
@@ -31,7 +31,7 @@ class Search extends React.Component {
     }
 
     onTypeSelect = (type) => {
-        this.setState({ type: 'api/' + type });
+        this.setState({ term: '', type: 'api/' + type });
     }
 
     render() {

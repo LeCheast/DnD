@@ -10,7 +10,8 @@ class ResultCard extends React.Component {
         this.setState({ test: 'Hello' });
         if (this.props.result.hasOwnProperty('url')) {
             console.log(this.props.result.url);
-            const result = await dnd.get();
+            const result = await dnd.get(this.props.result.url);
+            console.log(result);
         }
     };
 
